@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Border (No before/after)</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            height: 100vh;
+            background: #111111fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .border-box {
+            position: relative;
+            width: 300px;
+            height: 250px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+
+        .border-rotate {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    #0059ff 90deg,
+                    transparent 180deg,
+                    transparent 360deg);
+            animation: spin 3s linear infinite;
+            transform-origin: center;
+        }
+
+
+        .inner {
+            position: absolute;
+            inset: 5px;
+            background: #0f0f0f;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+
+        .text {
+            position: relative;
+            color: #ccc;
+            font-size: 30px;
+
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="border-box">
+        <div class="border-rotate"></div>
+        <div class="inner"></div>
+        <div class="text">BORDER</div>
+    </div>
+
+</body>
+
+</html>
